@@ -2,12 +2,9 @@ require_relative 'player'
 
 class Dealer < Player
 
-  def initialize(name = "Dealer")
-    super
-  end
+  MAX_DEALER_POINTS = 17
 
-  def take_card
-    return if self.hand.points >= 17
+  def initialize(name = "Dealer")
     super
   end
 

@@ -15,7 +15,6 @@ class Bank
     winners.each do |winner|
       winner.add_money(prize)
     end
-    reset_bank
   end
 
   protected
