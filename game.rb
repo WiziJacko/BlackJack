@@ -30,11 +30,11 @@ class Game
   end
 
   def dealer_move
-    @dealer.take_card(@deck) if @dealer.points < Dealer::MAX_DEALER_POINTS && @dealer.cards.size < Hand::MAX_NUMBER_CARDS
+    @dealer.take_card(@deck) if @dealer.can_take_card?
   end
 
   def user_take_card
-    @player.take_card(@deck) if @player.cards.size < Hand::MAX_NUMBER_CARDS
+    @player.take_card(@deck) if @player.can_take_card?
     @interface.show_cards(@player)
   end
 
@@ -59,13 +59,13 @@ class Game
   end
 
   def game_result
-    ## Если у игрока и дилера перебор, то проигрывает Игрок
     points_diff = @player.points - @dealer.points
+    return DRAW if @dealer.points_over? && @player.points_over? 
+    return DRAW if points_diff == 0
     return DEALER_WON if @player.points_over?
     return PLAYER_WON if @dealer.points_over?
     return PLAYER_WON if points_diff > 0
     return DEALER_WON if points_diff < 0
-    return DRAW if points_diff == 0
   end
 
   def calc_the_prize(result)

@@ -10,14 +10,14 @@ class Deck
 
   def deck_initiation
     @deck = []
-    Card::CARD_SUITS.each do |suit|
+    Card::SUITS.each do |suit|
       value = 0
       additional = 10
       counter = 1
-      Card::CARD_VALUES.each do |card_value|
+      Card::RANKS.each do |rank|
         value = counter if counter < 11
         additional = 0 if counter > 1
-        @deck << Card.new(suit: suit, card_value: card_value, value: value, additional: additional)
+        @deck << Card.new(suit: suit, rank: rank, value: value, additional: additional)
         counter += 1
       end
     end

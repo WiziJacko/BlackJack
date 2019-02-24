@@ -8,4 +8,8 @@ class Dealer < Player
     super
   end
 
+  def can_take_card?
+    points < MAX_DEALER_POINTS && cards.size < Hand::MAX_NUMBER_CARDS
+  end
+
 end

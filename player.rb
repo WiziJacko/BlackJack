@@ -26,7 +26,7 @@ class Player
 
   def new_round
     @hand.clear_hand
-    @hand.points = 0
+    @hand.clear_points
   end
 
   def cards
@@ -43,6 +43,10 @@ class Player
 
   def enough_money?
     money > 0
+  end
+
+  def can_take_card?
+    cards.size < Hand::MAX_NUMBER_CARDS
   end
 
   def bet(value = BASIC_BET, bank)

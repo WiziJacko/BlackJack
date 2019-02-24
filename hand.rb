@@ -3,8 +3,7 @@ require_relative 'deck'
 
 class Hand
 
-  attr_reader :cards
-  attr_accessor :points
+  attr_reader :cards, :points
 
   BASIC_NUMBER_CARDS = 2
   MAX_NUMBER_CARDS = 3
@@ -24,12 +23,18 @@ class Hand
     @cards = []
   end
 
+  def clear_points
+    @points = 0
+  end
+
   def count_points
     @points = 0
+    @additionals = 0
     @cards.each do |card| 
       @points += card.value + card.additional
-      @points -= card.additional  if @points > 21
+      @additionals += card.additional
     end
+    @points -= @additionals if @points > 21
   end
 
 end

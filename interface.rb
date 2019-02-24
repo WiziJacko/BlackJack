@@ -50,7 +50,7 @@ class Interface
 
   def show_cards(player)
     puts "Игрок: #{player.name}. Количество очков: #{player.points}"
-    player.hand.cards.each { |card| puts " Карта: #{card.card_value}#{card.suit}" }
+    player.hand.cards.each { |card| puts " Карта: #{card.}#{card.suit}" }
   end
 
   def user_action
