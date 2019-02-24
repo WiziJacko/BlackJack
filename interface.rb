@@ -32,6 +32,15 @@ class Interface
     ------------------------------------------------------------
   PLAY_FURTHER
 
+  GAME_ENDED_MENU = <<~GAME_ENDED
+    ------------------------------------------------------------
+    |                                                          |
+    |                      Игра окончена!                      |
+    |                     Спасибо за игру                      |
+    |                                                          |
+    ------------------------------------------------------------
+  GAME_ENDED
+
   RESULTS = ["Ничья!", "Вы выграли!", "Вы програли!"]
 
   SKIP = 1
@@ -50,7 +59,7 @@ class Interface
 
   def show_cards(player)
     puts "Игрок: #{player.name}. Количество очков: #{player.points}"
-    player.hand.cards.each { |card| puts " Карта: #{card.}#{card.suit}" }
+    player.hand.cards.each { |card| puts " Карта: #{card.card_info}" }
   end
 
   def user_action
@@ -73,6 +82,10 @@ class Interface
   def play_further?(player)
     puts PLAY_FURTHER_MENU
     gets.to_i
+  end
+
+  def game_ended
+    puts GAME_ENDED_MENU
   end
 
   def not_correct_input

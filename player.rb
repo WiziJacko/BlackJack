@@ -25,8 +25,7 @@ class Player
   end
 
   def new_round
-    @hand.clear_hand
-    @hand.clear_points
+    @hand.reset
   end
 
   def cards

@@ -13,7 +13,11 @@ class Card
   end
 
   def card_info
-    return @rank + @suit
+    return [@rank,@suit].join(' ')
+  end
+
+  def ace?
+    rank == RANKS[0]
   end
 
 end

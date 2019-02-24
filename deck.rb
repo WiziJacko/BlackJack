@@ -17,6 +17,7 @@ class Deck
       Card::RANKS.each do |rank|
         value = counter if counter < 11
         additional = 0 if counter > 1
+        value += additional
         @deck << Card.new(suit: suit, rank: rank, value: value, additional: additional)
         counter += 1
       end

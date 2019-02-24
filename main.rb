@@ -24,7 +24,7 @@ class Main
       break if !@player.enough_money? || !@dealer.enough_money?
       break if !game.repeat_game?
     end
-
+    @interface.game_ended
   end
 end
 

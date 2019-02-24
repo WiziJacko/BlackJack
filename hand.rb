@@ -19,22 +19,24 @@ class Hand
     count_points
   end
 
-  def clear_hand
+  def reset
     @cards = []
-  end
-
-  def clear_points
     @points = 0
   end
+
+  private
 
   def count_points
-    @points = 0
-    @additionals = 0
-    @cards.each do |card| 
-      @points += card.value + card.additional
-      @additionals += card.additional
+    points = cards.map(&:value).sum
+    points = ace_correction(points)
+    @points = points
+  end
+
+  def ace_correction(points)
+    @cards.each do |card|
+      points -= card.additional if card.ace? && points > MAX_POINTS
     end
-    @points -= @additionals if @points > 21
+    points
   end
 
 end
